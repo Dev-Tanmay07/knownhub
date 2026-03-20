@@ -1,1 +1,4 @@
 project_id = "wzfdcwvmteikhygygxpz"
+
+[functions.generate-article]
+verify_jwt = false

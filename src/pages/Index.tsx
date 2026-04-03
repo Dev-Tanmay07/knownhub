@@ -60,22 +60,10 @@ const Index = () => {
         </form>
       </div>
 
-      {/* ===== CENTRAL AD BLOCK — Full-width centered ===== */}
+      {/* ===== CENTRAL AD BLOCK ===== */}
       <div className="flex-1 flex items-center justify-center py-6">
         <div className="w-full max-w-4xl mx-auto px-4">
-          <div className="ad-banner flex flex-col items-center justify-center h-64 md:h-80 rounded-xl border-2 border-dashed">
-            <div className="flex flex-col items-center gap-3">
-              <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" /></svg>
-              </div>
-              <p className="text-base font-body font-semibold text-muted-foreground">
-                Advertisement Space
-              </p>
-              <p className="text-sm text-muted-foreground/70 max-w-md text-center">
-                Premium ad placement — visible on every page load. <span className="wiki-link">Contact us for advertising</span>
-              </p>
-            </div>
-          </div>
+          <AdBanner size="large" />
         </div>
       </div>
 

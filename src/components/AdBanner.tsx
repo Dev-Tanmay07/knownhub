@@ -1,25 +1,41 @@
-import { Megaphone } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 interface AdBannerProps {
   size?: "small" | "medium" | "large";
+  slot?: string;
 }
 
-const AdBanner = ({ size = "medium" }: AdBannerProps) => {
+const AdBanner = ({ size = "medium", slot = "auto" }: AdBannerProps) => {
+  const adRef = useRef<HTMLDivElement>(null);
+  const pushed = useRef(false);
+
+  useEffect(() => {
+    if (pushed.current) return;
+    try {
+      const adsbygoogle = (window as any).adsbygoogle || [];
+      adsbygoogle.push({});
+      pushed.current = true;
+    } catch (e) {
+      console.error("AdSense error:", e);
+    }
+  }, []);
+
   const heightMap = {
-    small: "h-20",
-    medium: "h-32 md:h-40",
-    large: "h-48 md:h-64",
+    small: "min-h-[100px]",
+    medium: "min-h-[250px]",
+    large: "min-h-[280px]",
   };
 
   return (
-    <div className={`ad-banner flex flex-col items-center justify-center gap-2 ${heightMap[size]}`}>
-      <Megaphone className="h-6 w-6 text-muted-foreground" />
-      <p className="text-sm font-body text-muted-foreground font-medium">
-        Advertisement
-      </p>
-      <p className="text-xs text-muted-foreground/60">
-        Your ad could be here — <span className="wiki-link">Contact us</span>
-      </p>
+    <div className={`${heightMap[size]} w-full overflow-hidden`} ref={adRef}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-8774993022306712"
+        data-ad-slot={slot}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </div>
   );
 };
